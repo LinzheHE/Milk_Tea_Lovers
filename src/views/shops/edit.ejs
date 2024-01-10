@@ -1,0 +1,62 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">Edit Shop</h1>
+
+        <div class="col-md-6 offset-md-3">
+            <form action="/shops/<%=shop._id%>?_method=PUT" method="POST" novalidate class="validated-form"
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Shop Name</label>
+                    <input class="form-control" type="text" id="title" name="shop[title]"
+                        value="<%= shop.title %>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="shop[location]"
+                        value="<%= shop.location %>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="price">Beverage Price / Person</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.0" aria-label="price"
+                            aria-describedby="price-label" name="shop[price]" value="<%= shop.price %>"
+                            required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="shop[description]" required><%= shop.description %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="images" class="form-label">Upload more images</label>
+                    <input class="form-control" type="file" id="images" name="image" multiple>
+                </div>
+
+                <div>
+                    <div class="mb-3">
+                        <% shop.images.forEach(function(img, i) { %>
+                            <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
+                            <div class="form-check-inline">
+                                <input type="checkbox" name="deleteImages[]" value="<%=img.filename %>"
+                                    id="image-<%=i%>">
+                            </div>
+                            <label for="image-<%=i%>">Delete?</label>
+                            <% }) %>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <button class="btn btn-info">Update Shop</button>
+                </div>
+
+            </form>
+            <!-- <a href="/shops/<%= shop._id %>">Back To Shop</a> -->
+        </div>
+    </div>

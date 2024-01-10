@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Shop</h1>
+
+        <div class="col-md-6 offset-md-3">
+            <form action="/shops" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Shop Name</label>
+                    <input class="form-control" type="text" id="title" name="shop[title]" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="shop[location]" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="price">Beverage Price / Person</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.0" aria-label="price"
+                            aria-describedby="price-label" name="shop[price]" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="shop[description]"
+                        required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="images" class="form-label">Upload images</label>
+                    <input class="form-control" type="file" id="images" name="image" multiple>
+                </div>
+
+
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Shop</button>
+                </div>
+
+            </form>
+            <!-- <a href="/shops">All Shops</a> -->
+        </div>
+    </div>
